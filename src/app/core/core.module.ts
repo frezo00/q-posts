@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 /**
  * This abstract class used for module building by extending this class
@@ -15,7 +18,14 @@ export abstract class EnsureImportedOnceModule {
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ]
 })
 export class CoreModule extends EnsureImportedOnceModule {
   constructor(@SkipSelf() @Optional() parent: CoreModule) {

@@ -3,6 +3,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { ApiService } from './services/api.service';
 
 /**
  * This abstract class used for module building by extending this class
@@ -20,6 +21,7 @@ export abstract class EnsureImportedOnceModule {
   declarations: [],
   imports: [CommonModule],
   providers: [
+    ApiService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

@@ -1,0 +1,31 @@
+// =====================================
+//   ROOT - stylings for root elements
+// =====================================
+
+// ---------------------------------
+//   BOX MODEL - defines box model
+// ---------------------------------
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+// ----------------------------------------------------
+//   HTML - default stylings for :root/<html> element
+// ----------------------------------------------------
+:root {
+  scroll-behavior: smooth;
+
+  // for Google Fonts
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ----------------------------------------------
+//   BODY - default stylings for <body> element
+// ----------------------------------------------
+body {
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  margin: 0;
+}

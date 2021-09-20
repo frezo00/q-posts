@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and test Angular app
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node_version }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Test app
+        run: npm run test
+
+      - name: Build app
+        run: npm run build:prod

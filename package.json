@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "lint": "ng lint",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,scss,html}\"",
     "prettier:write": "prettier --config .prettierrc --write \"src/**/*.{ts,scss,html}\""
   },
@@ -17,7 +18,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,scss,html}": [
-      "npm run prettier:check"
+      "npm run lint"
     ]
   },
   "private": true,
@@ -37,10 +38,20 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.6",
+    "@angular-eslint/builder": "12.5.0",
+    "@angular-eslint/eslint-plugin": "12.5.0",
+    "@angular-eslint/eslint-plugin-template": "12.5.0",
+    "@angular-eslint/schematics": "12.5.0",
+    "@angular-eslint/template-parser": "12.5.0",
     "@angular/cli": "~12.2.6",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "4.28.2",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.2",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ApiService } from './services/api.service';
 
@@ -18,7 +19,7 @@ export abstract class EnsureImportedOnceModule {
 }
 
 @NgModule({
-  declarations: [],
+  declarations: [PageNotFoundComponent],
   imports: [CommonModule],
   providers: [
     ApiService,

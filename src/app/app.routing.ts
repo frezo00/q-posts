@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'posts',
     loadChildren: () => import('./features/posts/posts.module').then(m => m.PostsModule)
   },
+  {
+    path: 'post/:id',
+    loadChildren: () => import('./features/post/post.module').then(m => m.PostModule)
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

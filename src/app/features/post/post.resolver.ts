@@ -11,7 +11,7 @@ export class PostResolver implements Resolve<Post | null> {
   resolve(route: ActivatedRouteSnapshot): Observable<Post | null> {
     const postId = route.paramMap.get('id');
     if (typeof postId === 'string') {
-      return this._apiService.getPostsById$(+postId);
+      return this._apiService.getPostById$(+postId);
     }
     return of(null);
   }

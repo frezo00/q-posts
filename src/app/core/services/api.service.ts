@@ -13,7 +13,7 @@ export class ApiService {
     return this._http.get<Post[]>(`${this._baseUrl}/posts`);
   }
 
-  getPostsById$(id: number): Observable<Post> {
+  getPostById$(id: number): Observable<Post> {
     return this._http.get<Post>(`${this._baseUrl}/posts/${id}`);
   }
 }

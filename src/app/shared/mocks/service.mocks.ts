@@ -1,4 +1,4 @@
-import { Post } from '@shared/models';
+import { Post, User } from '@shared/models';
 import { Observable, of } from 'rxjs';
 
 export class ServiceMocks {
@@ -6,8 +6,17 @@ export class ServiceMocks {
     getPosts$(): Observable<Post[]> {
       return of([]);
     },
-    getPostById$(): Observable<Post> {
+    getPostById$(_id: number): Observable<Post> {
       return of({} as Post);
+    },
+    getPostComments$(_postId: number): Observable<Comment[]> {
+      return of([]);
+    }
+  };
+
+  static userService = {
+    getUserById$(_id: number): Observable<User> {
+      return of({} as User);
     }
   };
 }

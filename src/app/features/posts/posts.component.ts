@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '@core/services/api.service';
+import { PostService } from '@core/services';
 import { Post } from '@shared/models';
 import { Observable } from 'rxjs';
 
@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
 export class PostsComponent implements OnInit {
   posts$!: Observable<Post[]>;
 
-  constructor(private _apiService: ApiService) {}
+  constructor(private _postService: PostService) {}
 
   ngOnInit(): void {
-    this.posts$ = this._apiService.getPosts$();
+    this.posts$ = this._postService.getPosts$();
   }
 }

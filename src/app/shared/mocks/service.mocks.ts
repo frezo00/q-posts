@@ -2,7 +2,7 @@ import { Post } from '@shared/models';
 import { Observable, of } from 'rxjs';
 
 export class ServiceMocks {
-  static apiService = {
+  static postService = {
     getPosts$(): Observable<Post[]> {
       return of([]);
     },

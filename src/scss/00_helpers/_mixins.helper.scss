@@ -1,0 +1,136 @@
+// ==================================
+//   MIXINS - Various helper mixins
+// ==================================
+
+// -----------------------------------------------
+//   FLEX - Mixin for setting Flexbox properties
+// -----------------------------------------------
+@mixin flex($direction: false, $justify: false, $align: false, $gsb: false, $wrap: false) {
+  display: flex;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+
+  @if $gsb {
+    flex: $gsb;
+  }
+
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+}
+
+// ----------------------------------------------------------------------
+//   MEDIA - Mixin that enables using styling for a specific breakpoint
+//   How to use:
+//
+//      selector {
+//        @include media(xs, max) {
+//          // put here stylings for the specified media breakpoint
+//        }
+//      }
+//
+// ----------------------------------------------------------------------
+@mixin media($breakpoint-name, $type: min) {
+  $breakpoint-pixels: map-contains($breakpoints, $breakpoint-name);
+
+  @if $breakpoint-pixels {
+    @if $type == max {
+      $breakpoint-pixels: $breakpoint-pixels - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $breakpoint-pixels) {
+      @content;
+    }
+  }
+}
+
+// -------------------------------------------------------------
+//   PLACEHOLDER - Mixin that enables styling the placeholders
+//   How to use:
+//
+//      input {
+//        @include placeholder {
+//          // put here stylings for the placeholder
+//        }
+//      }
+//
+// -------------------------------------------------------------
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// ----------------------------------------------------------------
+//   TRANSITION - Mixin for setting the 'transition' property
+//   How to use:
+//
+//   selector {
+//     // Pass in just CSS property name(s) separated with comma:
+//     @include transition(color, background-color);
+//   }
+// ----------------------------------------------------------------
+@mixin transition($args...) {
+  // Declare empty list and fill it in the loop
+  $props: ();
+  @each $prop in $args {
+    @if type-of($prop) == string {
+      $props: append($props, $prop $transition-duration $transition-timing, 'comma');
+    } @else {
+      $props: append($props, $prop, 'comma');
+    }
+  }
+  transition: $props;
+}
+
+// ----------------------------------------------------------
+//   TRUNCATE - Mixin that sets stylings for truncated text
+// ----------------------------------------------------------
+@mixin truncate($boundary: 100%) {
+  max-width: $boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+//   TYPOGRAPHY - Mixin for setting 'color', 'font-size', 'font-weight', 'line-height' and 'font-family' for the text
+// --------------------------------------------------------------------------------------------------------------------
+@mixin typography($color: inherit, $size: false, $weight: false, $line-height: false, $family: false) {
+  color: color($color);
+
+  @if $size {
+    font-size: font-size($size);
+  }
+
+  @if $weight {
+    font-weight: font-weight($weight);
+  }
+
+  @if $line-height {
+    line-height: line-height($line-height);
+  }
+
+  @if $family {
+    font-family: $family;
+  }
+}

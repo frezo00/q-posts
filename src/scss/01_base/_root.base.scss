@@ -26,6 +26,20 @@
 //   BODY - default stylings for <body> element
 // ----------------------------------------------
 body {
-  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  @include flex(column);
+  @include typography(text, medium, regular, regular, $font-family-base);
+  @include media(sm) {
+    font-size: font-size(regular);
+  }
   margin: 0;
+  background-color: color(white);
+  overflow: hidden;
+}
+
+// ----------------------------------------------
+//   MAIN - default stylings for <main> element
+// ----------------------------------------------
+main {
+  @include flex(column, $gsb: 1 0 0);
+  overflow: hidden auto;
 }

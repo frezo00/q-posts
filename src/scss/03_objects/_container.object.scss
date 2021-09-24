@@ -1,0 +1,9 @@
+// --------------------------------------------------
+//   CONTAINER - stylings for '.container' selector
+// --------------------------------------------------
+.container {
+  max-width: 765px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $spacing-5x;
+}

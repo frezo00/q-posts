@@ -27,7 +27,7 @@
 // ----------------------------------------------
 body {
   @include flex(column);
-  @include typography(text, medium, regular, regular, $font-family-base);
+  @include typography(text-primary, medium, regular, regular, $font-family-base);
   @include media(sm) {
     font-size: font-size(regular);
   }
@@ -41,5 +41,4 @@ body {
 // ----------------------------------------------
 main {
   @include flex(column, $gsb: 1 0 0);
-  overflow: hidden auto;
 }

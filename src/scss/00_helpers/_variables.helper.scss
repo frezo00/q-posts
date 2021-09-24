@@ -21,7 +21,8 @@ $_white: #ffffff;
 // ----------
 $color-primary: $_green;
 $color-secondary: $_aqua;
-$color-text: $_shark;
+$color-text-primary: $_shark;
+$color-text-secondary: lighten($_shark, 30%);
 $color-border: $_mercury;
 $color-gray: $_wild-sand;
 $color-white: $_white;
@@ -29,7 +30,8 @@ $color-white: $_white;
 $colors: (
   primary: $color-primary,
   secondary: $color-secondary,
-  text: $color-text,
+  text-primary: $color-text-primary,
+  text-secondary: $color-text-secondary,
   border: $color-border,
   gray: $color-gray,
   white: $color-white
@@ -42,7 +44,7 @@ $colors: (
 // ---------------
 //   FONT FAMILY
 // ---------------
-$font-family: 'Lato', Arial, Helvetica, sans-serif;
+$font-family: 'Rubik', Arial, Helvetica, sans-serif;
 $font-family-base: $font-family !default;
 
 // -------------
@@ -70,11 +72,15 @@ $font-size-base: $font-size-regular !default;
 // ----------------
 $font-weight-light: 300;
 $font-weight-regular: 400; // (base)
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $font-weights: (
   light: $font-weight-light,
   regular: $font-weight-regular,
+  medium: $font-weight-medium,
+  semibold: $font-weight-semibold,
   bold: $font-weight-bold,
   inherit: inherit
 );

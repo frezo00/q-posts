@@ -1,0 +1,11 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column);
+}
+
+.posts {
+  &__list {
+    height: calc(100vh - 115px);
+  }
+}

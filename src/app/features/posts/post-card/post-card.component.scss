@@ -1,0 +1,13 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column);
+  margin-bottom: $spacing-8x;
+}
+
+.post-card {
+  &__body {
+    color: color(text-secondary);
+    white-space: pre-wrap;
+  }
+}

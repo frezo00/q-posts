@@ -1,1 +1,9 @@
-<pre>{{ posts$ | async | json }}</pre>
+<section class="posts__search">
+  <label for="search">
+    <input type="search" name="search" id="search" />
+  </label>
+</section>
+
+<cdk-virtual-scroll-viewport [itemSize]="250" class="posts__list hide-scrollbar">
+  <app-post-card *cdkVirtualFor="let post of posts$ | async" [post]="post"></app-post-card>
+</cdk-virtual-scroll-viewport>

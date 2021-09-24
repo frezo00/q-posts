@@ -1,0 +1,12 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column);
+  height: 100vh;
+}
+
+.app {
+  &__header {
+    background: linear-gradient(90deg, color(primary), color(secondary));
+  }
+}

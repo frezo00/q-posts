@@ -19,7 +19,7 @@ export class PostService {
   getPosts$(): Observable<Post[]> {
     return this._http.get<PostResponse[]>(`${this._baseUrl}/posts`).pipe(
       exhaustMap(postsResponse => {
-        const uniqueUserIds = postsResponse.map(post => post.userId).filter(__uniques);
+        const uniqueUserIds = __uniques(postsResponse.map(post => post.userId));
         return forkJoin([...uniqueUserIds.map(userId => this._userService.getUserById$(userId))]).pipe(
           map(users => postsResponse.map(post => ({ ...post, user: users.find(user => user.id === post.userId) })))
         );

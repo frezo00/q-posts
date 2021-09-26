@@ -1,1 +1,1 @@
-export const __uniques = (value: unknown, i: number, self: unknown[]) => self.indexOf(value) === i;
+export const __uniques = <T>(values: T[]): T[] => values?.filter((value, i, self) => self.indexOf(value) === i);

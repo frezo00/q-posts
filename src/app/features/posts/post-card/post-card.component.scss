@@ -2,12 +2,27 @@
 
 :host {
   @include flex(column);
-  margin-bottom: $spacing-8x;
+  @include transition(transform, box-shadow);
+  padding: $spacing-5x;
+  margin: $spacing-3x;
+  background-color: color(white);
+  border-radius: $border-radius-base;
+
+  &:hover {
+    transform: translateY(-#{$spacing-base});
+    box-shadow: $box-shadow-base;
+  }
 }
 
 .post-card {
+  &__title {
+    @include typography($size: large, $weight: bold);
+    display: block;
+    margin: 0 0 $spacing-3x;
+  }
+
   &__body {
+    @include truncate();
     color: color(text-secondary);
-    white-space: pre-wrap;
   }
 }

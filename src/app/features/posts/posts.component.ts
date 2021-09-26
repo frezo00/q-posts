@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PostService } from '@core/services';
 import { Post } from '@shared/models';
 import { Observable } from 'rxjs';
@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostsComponent implements OnInit {
   posts$!: Observable<Post[]>;
@@ -16,4 +17,6 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.posts$ = this._postService.getPosts$();
   }
+
+  trackById = (_: number, post: Post) => post.id;
 }

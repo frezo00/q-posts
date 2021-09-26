@@ -1,5 +1,5 @@
 <header>
-  <h3>{{ post?.title }}</h3>
+  <a routerLink="/post/{{ post?.id }}" class="post-card__title">{{ post?.title }}</a>
   <span>{{ post?.user?.name }}</span>
 </header>
 

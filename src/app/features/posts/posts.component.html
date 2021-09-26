@@ -4,6 +4,6 @@
   </label>
 </section>
 
-<cdk-virtual-scroll-viewport [itemSize]="250" class="posts__list hide-scrollbar">
-  <app-post-card *cdkVirtualFor="let post of posts$ | async" [post]="post"></app-post-card>
+<cdk-virtual-scroll-viewport [itemSize]="200" class="posts__list hide-scrollbar">
+  <app-post-card *cdkVirtualFor="let post of posts$ | async; trackBy: trackById" [post]="post"></app-post-card>
 </cdk-virtual-scroll-viewport>

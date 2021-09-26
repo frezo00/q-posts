@@ -24,7 +24,7 @@ $color-secondary: $_aqua;
 $color-text-primary: $_shark;
 $color-text-secondary: lighten($_shark, 30%);
 $color-border: $_mercury;
-$color-gray: $_wild-sand;
+$color-background: $_wild-sand;
 $color-white: $_white;
 
 $colors: (
@@ -33,8 +33,9 @@ $colors: (
   text-primary: $color-text-primary,
   text-secondary: $color-text-secondary,
   border: $color-border,
-  gray: $color-gray,
-  white: $color-white
+  background: $color-background,
+  white: $color-white,
+  inherit: inherit
 );
 
 // ===================================================================================================

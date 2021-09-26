@@ -1,0 +1,11 @@
+// ---------------------------------------
+//   ANCHOR - stylings for '<a>' element
+// ---------------------------------------
+a {
+  @include typography(text-primary, large, bold);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

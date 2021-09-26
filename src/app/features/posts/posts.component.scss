@@ -5,8 +5,12 @@
 }
 
 .posts {
+  &__search {
+    margin-top: $spacing-4x;
+  }
+
   &__list {
     height: calc(100vh - 115px);
-    margin: $spacing-3x -#{$spacing-3x};
+    margin: $spacing-4x -#{$spacing-3x};
   }
 }

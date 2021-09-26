@@ -1,9 +1,18 @@
-<section class="posts__search">
+<header class="posts__search">
   <label for="search">
-    <input type="search" name="search" id="search" />
+    <input
+      [(ngModel)]="search"
+      type="search"
+      name="search"
+      id="search"
+      placeholder="Search posts by user name/username..."
+    />
   </label>
-</section>
+</header>
 
 <cdk-virtual-scroll-viewport [itemSize]="200" class="posts__list hide-scrollbar">
-  <app-post-card *cdkVirtualFor="let post of posts$ | async; trackBy: trackById" [post]="post"></app-post-card>
+  <app-post-card
+    *cdkVirtualFor="let post of posts$ | async | search: search:['user.name', 'user.username']; trackBy: trackById"
+    [post]="post"
+  ></app-post-card>
 </cdk-virtual-scroll-viewport>

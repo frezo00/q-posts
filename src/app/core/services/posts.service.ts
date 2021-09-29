@@ -9,7 +9,7 @@ import { exhaustMap, map, tap } from 'rxjs/operators';
 import { UserService } from './user.service';
 
 @Injectable()
-export class PostService {
+export class PostsService {
   private _baseUrl = environment.baseUrl;
 
   private _posts$ = new BehaviorSubject<Post[]>([]);

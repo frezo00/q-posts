@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { PostService } from '@core/services';
+import { PostsService } from '@core/services';
 import { Post } from '@shared/models';
 import { Observable } from 'rxjs';
 
@@ -14,10 +14,10 @@ export class PostsComponent implements OnInit {
 
   search = '';
 
-  constructor(private _postService: PostService) {}
+  constructor(private _postsService: PostsService) {}
 
   ngOnInit(): void {
-    this.posts$ = this._postService.getPosts$();
+    this.posts$ = this._postsService.getPosts$();
   }
 
   trackById = (_: number, post: Post) => post.id;

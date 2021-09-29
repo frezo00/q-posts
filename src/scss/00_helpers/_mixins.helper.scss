@@ -29,6 +29,15 @@
   }
 }
 
+// --------------------------------------------------------
+//   LIST RESET - Mixin for reseting <ul> list properties
+// --------------------------------------------------------
+@mixin list-reset() {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 // ----------------------------------------------------------------------
 //   MEDIA - Mixin that enables using styling for a specific breakpoint
 //   How to use:

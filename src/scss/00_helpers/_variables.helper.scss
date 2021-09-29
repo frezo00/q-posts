@@ -11,6 +11,7 @@
 // ------------------------------------------------------------------------------
 $_green: #00ff07;
 $_aqua: #00fff8;
+$_persian-red: #d52929;
 $_shark: #303336;
 $_mercury: #e8e8e8;
 $_wild-sand: #f4f4f4;
@@ -21,6 +22,7 @@ $_white: #ffffff;
 // ----------
 $color-primary: $_green;
 $color-secondary: $_aqua;
+$color-error: $_persian-red;
 $color-text-primary: $_shark;
 $color-text-secondary: lighten($_shark, 30%);
 $color-border: $_mercury;
@@ -30,6 +32,7 @@ $color-white: $_white;
 $colors: (
   primary: $color-primary,
   secondary: $color-secondary,
+  error: $color-error,
   text-primary: $color-text-primary,
   text-secondary: $color-text-secondary,
   border: $color-border,

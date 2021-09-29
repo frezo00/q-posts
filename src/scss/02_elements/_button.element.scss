@@ -1,0 +1,15 @@
+// --------------------------------------------
+//   BUTTON - stylings for '<button>' element
+// --------------------------------------------
+button {
+  @include flex($align: center);
+  @include typography(text-primary, regular, medium, $family: $font-family-base);
+  @include transition(background-color, border-color);
+  border: 1px solid transparent;
+  border-radius: $border-radius-base;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -41,4 +41,5 @@ body {
 // ----------------------------------------------
 main {
   @include flex(column, $gsb: 1 0 0);
+  overflow-y: auto;
 }

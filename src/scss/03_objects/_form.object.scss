@@ -1,0 +1,30 @@
+// -------------------------------------
+//   FORM - stylings for '.form' class
+// -------------------------------------
+.form {
+  @include flex(column);
+
+  &-control {
+    &__input {
+      @include flex(column);
+
+      &.ng-invalid {
+        border-color: color(error);
+      }
+    }
+
+    &-validation {
+      @include flex(row, space-between, center);
+      @include typography($size: small, $line-height: double);
+      padding: 0 $spacing-1x;
+
+      &__error {
+        color: color(error);
+      }
+
+      &__info {
+        color: color(text-secondary);
+      }
+    }
+  }
+}

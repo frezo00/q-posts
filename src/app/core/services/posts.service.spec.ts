@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ServiceMocks } from '@shared/mocks';
 
 import { PostsService } from './posts.service';
-import { UserService } from './user.service';
+import { UsersService } from './users.service';
 
 describe('PostsService', () => {
   let service: PostsService;
@@ -11,7 +11,7 @@ describe('PostsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [PostsService, { provide: UserService, useValue: ServiceMocks.userService }]
+      providers: [PostsService, { provide: UsersService, useValue: ServiceMocks.usersService }]
     });
     service = TestBed.inject(PostsService);
   });

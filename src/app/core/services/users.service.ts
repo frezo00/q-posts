@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
-export class UserService {
+export class UsersService {
   private _baseUrl = environment.baseUrl;
 
   private _users = new BehaviorSubject<User[]>([]);

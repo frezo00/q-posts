@@ -7,7 +7,7 @@ import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { exhaustMap, map, tap } from 'rxjs/operators';
 
 import { CommentsService } from './comments.service';
-import { UserService } from './user.service';
+import { UsersService } from './users.service';
 
 @Injectable()
 export class PostsService {
@@ -17,7 +17,7 @@ export class PostsService {
 
   constructor(
     private _http: HttpClient,
-    private _userService: UserService,
+    private _usersService: UsersService,
     private _commentsService: CommentsService
   ) {}
 
@@ -25,7 +25,7 @@ export class PostsService {
     return this._http.get<PostResponse[]>(`${this._baseUrl}/posts`).pipe(
       exhaustMap(postsResponse => {
         const uniqueUserIds = __uniques(postsResponse.map(post => post.userId));
-        return forkJoin([...uniqueUserIds.map(userId => this._userService.getUserById$(userId))]).pipe(
+        return forkJoin([...uniqueUserIds.map(userId => this._usersService.getUserById$(userId))]).pipe(
           map(users => postsResponse.map(post => ({ ...post, user: users.find(user => user.id === post.userId) })))
         );
       }),
@@ -40,7 +40,7 @@ export class PostsService {
       .pipe(
         exhaustMap(postResponse =>
           forkJoin([
-            this._userService.getUserById$(postResponse.userId),
+            this._usersService.getUserById$(postResponse.userId),
             this._commentsService.getPostComments$(postResponse.id)
           ]).pipe(map(([user, comments]) => this._postWithoutUserId({ ...postResponse, user, comments })))
         )

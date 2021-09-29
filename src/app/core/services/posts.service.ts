@@ -6,6 +6,7 @@ import { __uniques } from '@shared/utils';
 import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { exhaustMap, map, tap } from 'rxjs/operators';
 
+import { CommentsService } from './comments.service';
 import { UserService } from './user.service';
 
 @Injectable()
@@ -14,7 +15,11 @@ export class PostsService {
 
   private _posts$ = new BehaviorSubject<Post[]>([]);
 
-  constructor(private _http: HttpClient, private _userService: UserService) {}
+  constructor(
+    private _http: HttpClient,
+    private _userService: UserService,
+    private _commentsService: CommentsService
+  ) {}
 
   getPosts$(): Observable<Post[]> {
     return this._http.get<PostResponse[]>(`${this._baseUrl}/posts`).pipe(
@@ -34,15 +39,12 @@ export class PostsService {
       .get<PostResponse>(`${this._baseUrl}/posts/${id}`)
       .pipe(
         exhaustMap(postResponse =>
-          forkJoin([this._userService.getUserById$(postResponse.userId), this.getPostComments$(postResponse.id)]).pipe(
-            map(([user, comments]) => this._postWithoutUserId({ ...postResponse, user, comments }))
-          )
+          forkJoin([
+            this._userService.getUserById$(postResponse.userId),
+            this._commentsService.getPostComments$(postResponse.id)
+          ]).pipe(map(([user, comments]) => this._postWithoutUserId({ ...postResponse, user, comments })))
         )
       );
-  }
-
-  getPostComments$(postId: number): Observable<Comment[]> {
-    return this._http.get<Comment[]>(`${this._baseUrl}/posts/${postId}/comments`);
   }
 
   private _postWithoutUserId(postWithUser: PostResponse & { user?: User; comments?: Comment[] }): Post {

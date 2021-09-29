@@ -10,9 +10,10 @@
   </label>
 </header>
 
-<cdk-virtual-scroll-viewport [itemSize]="200" class="posts__list hide-scrollbar">
+<section class="posts__list">
   <app-post-card
-    *cdkVirtualFor="let post of posts$ | async | search: search:['user.name', 'user.username']; trackBy: trackById"
+    *ngFor="let post of posts$ | async | search: search:['user.name', 'user.username']; trackBy: trackById"
     [post]="post"
+    (createComment)="onCommentCreate($event)"
   ></app-post-card>
-</cdk-virtual-scroll-viewport>
+</section>

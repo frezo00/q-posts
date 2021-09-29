@@ -12,10 +12,6 @@
     transform: translateY(-#{$spacing-base});
     box-shadow: $box-shadow-base;
   }
-
-  &:first-of-type {
-    margin-top: 0;
-  }
 }
 
 .post-card {

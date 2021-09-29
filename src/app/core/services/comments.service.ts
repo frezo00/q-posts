@@ -20,4 +20,8 @@ export class CommentsService {
       map(nestedComments => nestedComments.reduce((allComments, comments) => [...allComments, ...comments], []))
     );
   }
+
+  createComment$(data: any): Observable<Comment> {
+    return this._http.post<Comment>(`${this._baseUrl}/comments`, data);
+  }
 }

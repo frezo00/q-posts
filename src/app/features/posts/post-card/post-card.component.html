@@ -1,15 +1,17 @@
 <header>
   <a routerLink="/post/{{ post?.id }}" class="post-card__title">{{ post?.title }}</a>
-  <span>{{ post?.user?.name }}</span>
+  <span>{{ post?.user?.name }} (#{{ post?.user?.username }})</span>
 </header>
 
-<section>
-  <p class="post-card__body">{{ post?.body }}</p>
-</section>
+<p class="post-card__body">{{ post?.body }}</p>
 
 <footer>
-  <button>
-    <span>Comments</span>
-    <span>(5)</span>
+  <button (click)="toggleComments()" [class.button--active]="showComments" class="button button--secondary">
+    Comments ({{ post?.comments?.length }})
   </button>
+
+  <ng-container *ngIf="showComments">
+    <q-comments [comments]="post?.comments || []"></q-comments>
+    <q-comment-form (commentCreate)="onNewComment($event)"></q-comment-form>
+  </ng-container>
 </footer>

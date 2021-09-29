@@ -10,7 +10,7 @@
   }
 
   &__list {
-    height: calc(100vh - 115px);
-    margin: $spacing-4x -#{$spacing-3x};
+    @include flex(column);
+    margin: $spacing-4x -#{$spacing-3x} $spacing-20x;
   }
 }

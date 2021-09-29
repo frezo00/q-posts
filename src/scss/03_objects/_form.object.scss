@@ -9,7 +9,10 @@
       @include flex(column);
 
       &.ng-invalid {
-        border-color: color(error);
+        &.ng-touched,
+        &.ng-dirty {
+          border-color: color(error);
+        }
       }
     }
 

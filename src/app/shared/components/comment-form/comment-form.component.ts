@@ -16,7 +16,7 @@ export class CommentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.commentForm = this._formBuilder.group({
-      comment: ['', Validators.maxLength(this.maxLength)]
+      comment: ['', [Validators.required, Validators.maxLength(this.maxLength)]]
     });
   }
 
@@ -28,5 +28,6 @@ export class CommentFormComponent implements OnInit {
 
     const commentText: string = this.commentForm.get('comment')?.value;
     this.commentCreate.emit(commentText);
+    this.commentForm.reset();
   }
 }

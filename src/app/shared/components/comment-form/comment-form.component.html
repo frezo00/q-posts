@@ -10,7 +10,7 @@
   </article>
 
   <section class="button-group">
-    <button class="button button--primary">Submit</button>
-    <button type="reset" class="button button--secondary">Cancel</button>
+    <button [disabled]="commentForm.invalid" class="button button--primary">Submit</button>
+    <button type="reset" class="button button--secondary">Clear</button>
   </section>
 </form>

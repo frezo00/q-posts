@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import { Comment, PostResponse } from '@shared/models';
+import { Comment, CommentRequest, PostResponse } from '@shared/models';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ export class CommentsService {
     );
   }
 
-  createComment$(data: any): Observable<Comment> {
-    return this._http.post<Comment>(`${this._baseUrl}/comments`, data);
+  createComment$(commentData: CommentRequest): Observable<Comment> {
+    return this._http.post<Comment>(`${this._baseUrl}/comments`, commentData);
   }
 }

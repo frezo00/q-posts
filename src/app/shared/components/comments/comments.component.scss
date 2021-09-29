@@ -1,0 +1,27 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column);
+  margin: $spacing-3x 0;
+  border-radius: $border-radius-base;
+  overflow: hidden;
+}
+
+.comments {
+  &__item {
+    @include flex(column);
+    @include typography($size: medium);
+    padding: $spacing-3x $spacing-5x;
+    border-bottom: $border-base;
+    background-color: color(background);
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  &__text {
+    white-space: pre-wrap;
+  }
+}

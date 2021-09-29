@@ -1,7 +1,10 @@
-export type Comment = {
-  id: number;
+export type CommentBase = {
+  body: string;
   postId: number;
+};
+
+export type Comment = CommentBase & {
+  id: number;
   name: string;
   email: string;
-  body: string;
 };

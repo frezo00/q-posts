@@ -1,0 +1,4 @@
+<article *ngFor="let comment of comments" class="comments__item">
+  <strong class="comments__author">{{ comment.name }} ({{ comment.email }})</strong>
+  <span class="comment__text">{{ comment.body }}</span>
+</article>

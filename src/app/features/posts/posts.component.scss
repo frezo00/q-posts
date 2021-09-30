@@ -1,0 +1,16 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column);
+}
+
+.posts {
+  &__search {
+    margin-top: $spacing-4x;
+  }
+
+  &__list {
+    @include flex(column);
+    margin: $spacing-4x -#{$spacing-3x} $spacing-20x;
+  }
+}

@@ -1,0 +1,16 @@
+<form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()" class="form">
+  <article class="form-control">
+    <textarea formControlName="comment" name="comment" id="comment" rows="4" class="form-control__input"></textarea>
+    <section class="form-control-validation">
+      <small class="form-control-validation__error">{{ commentForm.get('comment') | formControlError }}</small>
+      <small class="form-control-validation__info">
+        {{ commentForm.get('comment')?.value?.length || 0 }} / {{ maxLength }}
+      </small>
+    </section>
+  </article>
+
+  <section class="button-group">
+    <button [disabled]="commentForm.invalid" class="button button--primary">Submit</button>
+    <button type="reset" class="button button--secondary">Clear</button>
+  </section>
+</form>

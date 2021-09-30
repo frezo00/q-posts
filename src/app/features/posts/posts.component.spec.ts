@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ApiService } from '@core/services';
-import { ServiceMocks } from '@shared/mocks';
+import { FormsModule } from '@angular/forms';
+import { PostsService } from '@core/services';
+import { MockSearchPipe, ServiceMocks } from '@shared/mocks';
 
 import { PostsComponent } from './posts.component';
 
@@ -10,8 +11,9 @@ describe('PostsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PostsComponent],
-      providers: [{ provide: ApiService, useValue: ServiceMocks.apiService }]
+      imports: [FormsModule],
+      declarations: [PostsComponent, MockSearchPipe],
+      providers: [{ provide: PostsService, useValue: ServiceMocks.postsService }]
     }).compileComponents();
   });
 

@@ -4,7 +4,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { ApiService } from './services/api.service';
+import { CommentsService, PostsService, ProfileService, UsersService } from './services';
 
 /**
  * This abstract class used for module building by extending this class
@@ -22,7 +22,10 @@ export abstract class EnsureImportedOnceModule {
   declarations: [PageNotFoundComponent],
   imports: [CommonModule],
   providers: [
-    ApiService,
+    CommentsService,
+    PostsService,
+    ProfileService,
+    UsersService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

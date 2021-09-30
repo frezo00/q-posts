@@ -1,0 +1,44 @@
+// -------------------------------------------------------
+//   INPUT: Stylings for <input> and <textarea> elements
+// -------------------------------------------------------
+input,
+textarea {
+  @include flex($align: center);
+  @include typography(text-primary, medium, $family: $font-family-base);
+  @include transition(border-color);
+  @include placeholder() {
+    font-color: font-color(text-secondary);
+  }
+  @include media(sm) {
+    font-size: font-size(regular);
+  }
+  min-height: 45px;
+  padding: 0 $spacing-4x;
+  border: $border-base;
+  border-radius: $border-radius-base;
+  background-color: color(white);
+
+  &:focus {
+    border-color: color(text-secondary);
+    outline: none;
+  }
+
+  // Hide browser's 'clear search' icon
+  &[type='search'] {
+    width: 100%;
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+  }
+}
+
+textarea {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding-top: $spacing-3x;
+}

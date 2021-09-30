@@ -1,1 +1,18 @@
-<pre>{{ posts$ | async | json }}</pre>
+<header class="posts__search">
+  <label for="search">
+    <input
+      [(ngModel)]="search"
+      type="search"
+      name="search"
+      id="search"
+      placeholder="Search posts by user name/username..."
+    />
+  </label>
+</header>
+
+<section class="posts__list">
+  <app-post-card
+    *ngFor="let post of posts$ | async | search: search:['user.name', 'user.username']; trackBy: trackById"
+    [post]="post"
+  ></app-post-card>
+</section>

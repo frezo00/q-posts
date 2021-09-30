@@ -4,10 +4,13 @@
 .button {
   $self: &;
 
+  @include flex($align: center);
   @include typography(text-primary, medium);
   min-width: 32px;
   min-height: 32px;
   padding: 0 $spacing-3x;
+  border-radius: $border-radius-base;
+  cursor: pointer;
 
   &-group {
     @include flex($align: center);

@@ -2,7 +2,6 @@
 //   BUTTON - stylings for '<button>' element
 // --------------------------------------------
 button {
-  @include flex($align: center);
   @include typography(text-primary, regular, medium, $family: $font-family-base);
   @include transition(background-color, border-color, opacity);
   border: 1px solid transparent;

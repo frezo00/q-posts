@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
@@ -20,7 +21,7 @@ export abstract class EnsureImportedOnceModule {
 
 @NgModule({
   declarations: [PageNotFoundComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   providers: [
     CommentsService,
     PostsService,

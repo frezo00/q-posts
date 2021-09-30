@@ -1,0 +1,8 @@
+// -------------------------------------
+//   LIST - stylings for '.list' class
+// -------------------------------------
+.list {
+  @include flex(column);
+  margin-left: -#{$spacing-3x};
+  margin-right: -#{$spacing-3x};
+}

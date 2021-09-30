@@ -1,3 +1,26 @@
 // ----------------------------------------------------------
 //   SPACING - various spacing utility stylings and classes
 // ----------------------------------------------------------
+
+// Generated examples: m-0, mt-2, mb-4, p-1, pl-3, ...
+@for $i from 0 through 10 {
+  $directions: '' '-top' '-right' '-bottom' '-left';
+  $shorthands: '' 't' 'r' 'b' 'l'; // Shorthands: all(), top(t), right(r), bottom(b), left(l)
+
+  @for $j from 1 through length($shorthands) {
+    $properties: 'margin' 'padding';
+    $props: 'm' 'p'; // Props: margin(m), pagination(p)
+
+    $direction: nth($directions, $j); // One of $directions
+    $shorthand: nth($shorthands, $j); // One of $shorthands
+
+    @for $k from 1 through length($properties) {
+      $property: nth($properties, $k); // One of $properties
+      $prop: nth($props, $k); // One of $props
+
+      .#{$prop + $shorthand}-#{$i} {
+        #{$property + $direction}: #{$i * $spacing-base};
+      }
+    }
+  }
+}

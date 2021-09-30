@@ -1,6 +1,12 @@
 <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()" class="form">
   <article class="form-control">
-    <textarea formControlName="comment" name="comment" id="comment" rows="4" class="form-control__input"></textarea>
+    <textarea
+      formControlName="comment"
+      name="comment"
+      id="comment"
+      rows="4"
+      class="form-control__input hide-scrollbar"
+    ></textarea>
     <section class="form-control-validation">
       <small class="form-control-validation__error">{{ commentForm.get('comment') | formControlError }}</small>
       <small class="form-control-validation__info">

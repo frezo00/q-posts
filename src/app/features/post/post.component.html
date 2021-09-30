@@ -1,3 +1,5 @@
 <a routerLink="/posts" class="button button--secondary">< Back</a>
 
-<q-post-card *ngIf="post$ | async as post" [post]="post" [isPostPage]="true" [showPostComments]="true"></q-post-card>
+<section class="list">
+  <q-post-card *ngIf="post$ | async as post" [post]="post" [isPostPage]="true" [showPostComments]="true"></q-post-card>
+</section>

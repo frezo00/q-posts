@@ -10,7 +10,7 @@
   </label>
 </header>
 
-<section class="posts__list">
+<section class="posts__list list">
   <q-post-card
     *ngFor="let post of posts$ | async | search: search:['user.name', 'user.username']; trackBy: trackById"
     [post]="post"

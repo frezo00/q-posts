@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MockFormControlErrorPipe } from '@shared/mocks';
 
 import { CommentFormComponent } from './comment-form.component';
 
@@ -8,7 +10,9 @@ describe('CommentFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CommentFormComponent]
+      imports: [ReactiveFormsModule],
+      declarations: [CommentFormComponent, MockFormControlErrorPipe],
+      providers: [FormBuilder]
     }).compileComponents();
   });
 

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-post-card',
+  selector: 'q-post-card',
   templateUrl: './post-card.component.html',
   styleUrls: ['./post-card.component.scss']
 })

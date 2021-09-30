@@ -11,8 +11,8 @@
 </header>
 
 <section class="posts__list">
-  <app-post-card
+  <q-post-card
     *ngFor="let post of posts$ | async | search: search:['user.name', 'user.username']; trackBy: trackById"
     [post]="post"
-  ></app-post-card>
+  ></q-post-card>
 </section>

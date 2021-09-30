@@ -7,8 +7,11 @@ export class ServiceMocks {
     getPosts$(): Observable<Post[]> {
       return of([]);
     },
-    getPostById$(_id: number): Observable<Post> {
+    getPostById$(_id: number): Observable<Post | null> {
       return of({} as Post);
+    },
+    updatePost(_updatedPost: Post): void {
+      return;
     }
   };
 

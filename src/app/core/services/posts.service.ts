@@ -14,6 +14,10 @@ export class PostsService {
 
   private _posts$ = new BehaviorSubject<Post[]>([]);
 
+  get posts(): Post[] {
+    return this._posts$.getValue();
+  }
+
   constructor(
     private _http: HttpClient,
     private _usersService: UsersService,
@@ -21,6 +25,9 @@ export class PostsService {
   ) {}
 
   getPosts$(): Observable<Post[]> {
+    if (this.posts?.length) {
+      return this._posts$;
+    }
     return this._http.get<PostResponse[]>(`${this._baseUrl}/posts`).pipe(
       exhaustMap(postsResponse =>
         zip(
@@ -41,7 +48,10 @@ export class PostsService {
     );
   }
 
-  getPostById$(id: number): Observable<Post> {
+  getPostById$(id: number): Observable<Post | null> {
+    if (this.posts?.length) {
+      return this._posts$.pipe(map(posts => posts.find(post => post?.id === id) || null));
+    }
     return this._http
       .get<PostResponse>(`${this._baseUrl}/posts/${id}`)
       .pipe(
@@ -52,6 +62,11 @@ export class PostsService {
           ).pipe(map(([user, comments]) => this._postWithoutUserId({ ...postResponse, user, comments })))
         )
       );
+  }
+
+  updatePost(updatedPost: Post): void {
+    const updatedPosts = this.posts.map(post => (post?.id === updatedPost?.id ? updatedPost : post));
+    this._posts$.next(updatedPosts);
   }
 
   private _postWithoutUserId(postWithUser: PostResponse & { user?: User; comments?: Comment[] }): Post {

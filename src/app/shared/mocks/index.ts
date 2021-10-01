@@ -1,2 +1,2 @@
 export * from './pipes.mock';
-export * from './service.mocks';
+export * from './services.mock';

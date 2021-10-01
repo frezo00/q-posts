@@ -97,7 +97,8 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/scss"]
             },
-            "scripts": []
+            "scripts": [],
+            "codeCoverageExclude": ["src/environments/**", "src/app/shared/mocks/**"]
           }
         },
         "lint": {

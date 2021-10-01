@@ -1,7 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CommentsService, ProfileService } from '@core/services';
+import { CommentsService, PostsService, ProfileService } from '@core/services';
 import { ServiceMocks } from '@shared/mocks';
 
 import { PostCardComponent } from './post-card.component';
@@ -16,6 +16,7 @@ describe('PostCardComponent', () => {
       declarations: [PostCardComponent],
       providers: [
         ChangeDetectorRef,
+        { provide: PostsService, useValue: ServiceMocks.postsService },
         { provide: CommentsService, useValue: ServiceMocks.commentsService },
         { provide: ProfileService, useValue: ServiceMocks.profileService }
       ]

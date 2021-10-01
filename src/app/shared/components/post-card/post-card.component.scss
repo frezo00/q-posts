@@ -22,7 +22,11 @@
   }
 
   &__body {
-    @include truncate();
     color: color(text-secondary);
+    white-space: pre-wrap;
+
+    &--truncate {
+      @include truncate();
+    }
   }
 }

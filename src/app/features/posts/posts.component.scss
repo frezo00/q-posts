@@ -10,7 +10,7 @@
   }
 
   &__list {
-    @include flex(column);
-    margin: $spacing-4x -#{$spacing-3x} $spacing-20x;
+    margin-top: $spacing-4x;
+    margin-bottom: $spacing-20x;
   }
 }

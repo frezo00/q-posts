@@ -1,0 +1,7 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column);
+  padding-top: $spacing-5x;
+  margin-bottom: $spacing-10x;
+}

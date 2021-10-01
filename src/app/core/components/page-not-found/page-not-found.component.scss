@@ -1,0 +1,17 @@
+@import '00_helpers/helpers';
+
+:host {
+  @include flex(column, center, center);
+  margin-top: 15vh;
+}
+
+.page-not-found {
+  &__title {
+    @include typography(primary, huge);
+  }
+
+  &__subtitle {
+    @include typography(text-primary, extra-large);
+    margin-bottom: $spacing-10x;
+  }
+}

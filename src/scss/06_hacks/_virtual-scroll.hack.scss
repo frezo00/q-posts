@@ -1,9 +1,0 @@
-// --------------------------------------------------------------------------------------
-//   CDK-VIRTUAL-SCROLL-VIEWPORT - stylings for '<cdk-virtual-scroll-viewport>' element
-// --------------------------------------------------------------------------------------
-cdk-virtual-scroll-viewport {
-  & .cdk-virtual-scroll-content-wrapper {
-    @include flex(column);
-    width: 100%;
-  }
-}

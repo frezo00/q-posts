@@ -59,6 +59,7 @@ $font-size-medium: 0.875rem; // 14px
 $font-size-regular: 1rem; // 16px (base)
 $font-size-large: 1.25rem; // 20px
 $font-size-extra-large: 1.5rem; // 24px
+$font-size-huge: 5rem; // 80px
 
 $font-sizes: (
   small: $font-size-small,
@@ -66,6 +67,7 @@ $font-sizes: (
   regular: $font-size-regular,
   large: $font-size-large,
   extra-large: $font-size-extra-large,
+  huge: $font-size-huge,
   inherit: inherit
 );
 

@@ -1,9 +1,13 @@
 <header>
-  <a routerLink="/post/{{ post?.id }}" class="post-card__title">{{ post?.title }}</a>
+  <h1 *ngIf="isPostPage; else titleLink" class="post-card__title">{{ post?.title }}</h1>
+  <ng-template #titleLink>
+    <a routerLink="/post/{{ post?.id }}" class="post-card__title">{{ post?.title }}</a>
+  </ng-template>
+
   <span>{{ post?.user?.name }} (#{{ post?.user?.username }})</span>
 </header>
 
-<p class="post-card__body">{{ post?.body }}</p>
+<p [class.post-card__body--truncate]="!isPostPage" class="post-card__body">{{ post?.body }}</p>
 
 <footer>
   <button (click)="toggleComments()" [class.button--active]="showComments" class="button button--secondary">

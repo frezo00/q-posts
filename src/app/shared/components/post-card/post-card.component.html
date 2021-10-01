@@ -1,7 +1,7 @@
 <header>
   <h1 *ngIf="isPostPage; else titleLink" class="post-card__title">{{ post?.title }}</h1>
   <ng-template #titleLink>
-    <a routerLink="/post/{{ post?.id }}" class="post-card__title">{{ post?.title }}</a>
+    <a routerLink="/post/{{ post?.id }}" class="post-card__title link">{{ post?.title }}</a>
   </ng-template>
 
   <span>{{ post?.user?.name }} (#{{ post?.user?.username }})</span>

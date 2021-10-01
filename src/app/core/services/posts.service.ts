@@ -25,7 +25,7 @@ export class PostsService {
   ) {}
 
   getPosts$(): Observable<Post[]> {
-    if (this.posts?.length) {
+    if (this.posts?.length > 1) {
       return this._posts$;
     }
     return this._http.get<PostResponse[]>(`${this._baseUrl}/posts`).pipe(
@@ -43,7 +43,14 @@ export class PostsService {
           )
         )
       ),
-      map(postsWithUser => postsWithUser.map(this._postWithoutUserId)),
+      map(postsWithUser => {
+        let posts = postsWithUser.map(this._postWithoutUserId);
+        if (this.posts?.length === 1) {
+          // Make sure not to lose updated post if there is any
+          posts = posts.map(post => (post?.id === this.posts[0]?.id ? this.posts[0] : post));
+        }
+        return posts;
+      }),
       tap(posts => this._posts$.next(posts))
     );
   }
@@ -52,16 +59,20 @@ export class PostsService {
     if (this.posts?.length) {
       return this._posts$.pipe(map(posts => posts.find(post => post?.id === id) || null));
     }
-    return this._http
-      .get<PostResponse>(`${this._baseUrl}/posts/${id}`)
-      .pipe(
-        exhaustMap(postResponse =>
-          zip(
-            this._usersService.getUserById$(postResponse.userId),
-            this._commentsService.getPostComments$(postResponse.id)
-          ).pipe(map(([user, comments]) => this._postWithoutUserId({ ...postResponse, user, comments })))
-        )
-      );
+    return this._http.get<PostResponse>(`${this._baseUrl}/posts/${id}`).pipe(
+      exhaustMap(postResponse =>
+        zip(
+          this._usersService.getUserById$(postResponse.userId),
+          this._commentsService.getPostComments$(postResponse.id)
+        ).pipe(map(([user, comments]) => this._postWithoutUserId({ ...postResponse, user, comments })))
+      ),
+      tap(post => {
+        // If post isn't already in the 'posts' array, add it
+        if (!this.posts?.map(p => p?.id).includes(post?.id)) {
+          this._posts$.next([...this.posts, post]);
+        }
+      })
+    );
   }
 
   updatePost(updatedPost: Post): void {

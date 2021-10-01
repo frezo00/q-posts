@@ -3,14 +3,14 @@ import { __uniques } from '@shared/utils';
 
 @Pipe({ name: 'search' })
 export class SearchPipe implements PipeTransform {
-  transform(items: any[] | null, searchValue: string, keys?: string[]): any[] | undefined {
+  transform(items: any[] | null, searchValue: string, keys: string[] = []): any[] | undefined {
     if (!items?.length) {
       return [];
     }
 
     // In the case the 'items' are primitive values
-    if (!keys?.length && items.every(item => typeof item !== 'object')) {
-      return items.filter((item: string) => this._regexSearch(item, searchValue));
+    if (items.every(item => typeof item !== 'object')) {
+      return !keys?.length ? items.filter((item: string) => this._regexSearch(item, searchValue)) : [];
     }
 
     return keys?.reduce((results: any[], key) => {

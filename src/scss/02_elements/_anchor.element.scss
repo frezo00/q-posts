@@ -2,7 +2,7 @@
 //   ANCHOR - stylings for '<a>' element
 // ---------------------------------------
 a {
-  @include typography(text-primary, large, bold);
+  @include typography(text-primary);
   text-decoration: none;
 
   &:hover {

@@ -1,0 +1,9 @@
+// -------------------------------------
+//   LINK - stylings for '.link' class
+// -------------------------------------
+.link {
+  @include typography(text-primary, regular, bold);
+  @include media(md) {
+    font-size: font-size(large);
+  }
+}

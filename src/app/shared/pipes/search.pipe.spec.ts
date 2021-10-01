@@ -79,10 +79,6 @@ describe('SearchPipe', () => {
       {
         parameters: [example, 'invalid search', keys],
         expectedResult: []
-      },
-      {
-        parameters: [example, '', ['invalid-key']],
-        expectedResult: []
       }
     ];
 

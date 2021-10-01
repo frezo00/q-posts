@@ -13,10 +13,6 @@ export class SearchPipe implements PipeTransform {
       return !keys?.length ? items.filter((item: string) => this._regexSearch(item, searchValue)) : [];
     }
 
-    if (!keys.every(key => Object.keys(items[0]).includes(key))) {
-      return [];
-    }
-
     return keys?.reduce((results: any[], key) => {
       const nestedResults = items.filter(item => {
         const nestedItemValue = key
